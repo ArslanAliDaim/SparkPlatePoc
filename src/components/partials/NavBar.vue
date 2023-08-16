@@ -87,6 +87,9 @@ export default {
       const total = this.totalAssetsValue
       return this.formatCurrencyWithSettings(total, 2)
     },
+    /*
+    Connected the store state for the dark mode toggle to the local component.
+    */
     toggleDarkMode: {
       get() {
         return this.darkModeEnabled
@@ -95,6 +98,9 @@ export default {
         this.setDarkMode(value)
       }
     },
+    /*
+    I've established a binding between the local value for the header background color and the state within the store.
+    */
     headerStyles() {
       return `background-color: ${this.getHeaderColor}`
     }

@@ -1,6 +1,5 @@
 <!--
-Contributors: Arsalan Ali Daim
-
+Contributors: Tkxel
 Description: This component handles the main view for QR Code retreival/generation module.
 -->
 <template>
@@ -133,6 +132,9 @@ export default {
     selectedAction: 'decode'
   }),
   computed: {
+    /*
+     This computed property converts the parsed QR code into a PNG image, making it available for user visualization..
+    */
     generatedCodeURL() {
       if (this.codeIsReady) {
         const canvas = document.createElement('canvas')
@@ -160,6 +162,9 @@ export default {
       this.qrToShow = data
     },
 
+    /*
+     This method handles the download functionality based on format selection by the user.
+    */
     downloadQrCode(format) {
       const canvas = document.createElement('canvas')
       if (format === 'png') {
@@ -199,7 +204,9 @@ export default {
     closeDownloadButtonMenu() {
       this.downloadBtnMenuShow = false
     },
-
+    /*
+     This method manages the download functionality, allowing users to select the desired format..
+    */
     setDownloadFormat(format) {
       this.downloadFormat = format
       this.downloadBtnMenuShow = false

@@ -72,6 +72,9 @@ export default {
     this.path = this.$route.path
   },
   methods: {
+    /*
+    I've established a binding between the local value for the icons color and the state within the store.
+    */
     pathColor(path) {
       const color = this.getSideBarIconsColor
       if (color === '#000000') {

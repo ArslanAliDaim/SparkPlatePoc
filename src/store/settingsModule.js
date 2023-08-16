@@ -48,9 +48,9 @@ const initialState = () => {
     bugTrackingEnabled: false,
     networkSelection,
     visibilityToggles,
-    darkModeEnabled: false,
-    headerColor: '#000000',
-    sideBarIconsColor: '#000000'
+    darkModeEnabled: false, // Dark mode flag.
+    headerColor: '#000000', // Default header color.
+    sideBarIconsColor: '#000000' // Default side bar isons color
   }
 }
 

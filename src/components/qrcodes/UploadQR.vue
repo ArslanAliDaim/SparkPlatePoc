@@ -1,7 +1,7 @@
 <!--
-Contributors: Arsalan Ali Daim
-
-Description: This component handles the decoding/retrival of information from a QR Code and generating a new QR agaisnt the provided information.
+Contributors: Tkxel
+Delivery: August 16, 2023 - Wednesday
+Description: This component manages the retrieval and decoding of information from a QR Code, while also generating a new QR Code based on the provided information.
 -->
 <template>
   <modal
@@ -26,6 +26,7 @@ Description: This component handles the decoding/retrival of information from a 
               :class="[dragover ? dragover : 'bg-white']"
             >
               <div style="width: 50px">
+                <!-- Used inline style to keep it consistent with the existing implementation -->
                 <qr-code-icon style="fill: #38a169" class="icon" />
               </div>
               <p class="text-xl my-2" v-if="openPath === 'decode'">
@@ -138,6 +139,9 @@ export default {
   },
   data: initState,
   watch: {
+    /*
+     This wacher is bascially handling the open/close logic for the camera modal based on the changes in the flag..
+    */
     qrCameraModalOpen() {
       this.dragover = false
       if (this.qrCameraModalOpen) {
@@ -156,6 +160,10 @@ export default {
       this.dragover = false
       this.$emit('close-upload-modal')
     },
+
+    /*
+     This function dispatches the parsed QR data to the parent component for visual rendering or downloading purposes.
+    */
     qrParser(data) {
       try {
         this.$toast.success('QR Code imported successfully!')
@@ -168,11 +176,15 @@ export default {
         )
       }
     },
+
+    /*
+    This function manages the submission of data intended for QR code generation.
+    */
     submitInfo() {
       const { $toast } = this
       if (this.qrCodeInfo.trim() === '') {
         $toast.error(
-          'Please enter the required information. Before proceeding!',
+          'Before proceeding, please input the necessary information!',
           '',
           {
             position: 'center',
